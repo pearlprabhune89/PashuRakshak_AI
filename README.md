@@ -8,7 +8,7 @@ PahuRakshak_AI is designed as a practical solution to assit farmers in identifyi
 ## The Problem We Are Addressing:
 Livestock diseases like Lumpy Skin Disease, Foot and Mouth Disease, and Mastitis tend to spread quickly and escalate before action is taken.
 
-In real-world conditions:
+From what we observed in real-world rural conditions:
 * Veterinary help is not always immediately accessible
 * Early symptoms are subtle and easy to miss  
 * Delays in diagnosis increase both risk and cost
@@ -71,7 +71,8 @@ TEAM MEMBERS NAME:
 - 1.AARNA DESAI
 - 2.PEARL PRABHUNE
 - 3.PARI WELE
-- 4.SOUMYA MENDHE 
+- 4.SOUMYA MENDHE
+
 
   
 

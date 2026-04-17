@@ -1,10 +1,11 @@
 # PashuRakshak_AI
-## overview
+
+## overview:
 Livestock is at the heart of rural livelihood , especially in countries like India where cows and buffaloes are essential for daily income and nutrition .
 however , one of the major challenges faced by farmers is the late detection of diseases, which often results in severe health complications and financial loss.
 PahuRakshak_AI is designed as a practical solution to assit farmers in identifying early signs of diseases in their livestock using simple , accessible technology.
 
-## The Problem We Are Addressing
+## The Problem We Are Addressing:
 Livestock diseases like Lumpy Skin Disease, Foot and Mouth Disease, and Mastitis tend to spread quickly and escalate before action is taken.
 
 In real-world conditions:
@@ -13,7 +14,7 @@ In real-world conditions:
 * Delays in diagnosis increase both risk and cost
 * Internet connectivity cannot be relied upon
 
-  ## Key Features
+## Key Features:
 -  Image-based detection of visible symptoms  
 -  Simple and guided symptom input (fever, swelling, milk reduction)  
 -  Quick preliminary results with possible condition  
@@ -21,14 +22,14 @@ In real-world conditions:
 -  Information about nearby veterinary support (demo level)  
 -  Designed with low-connectivity environments in mind
 
-  ## How PashuRakshak_AI Works:
+  ##  How PashuRakshak_AI Works:
 1. The user uploads or captures an image of the animal  
 2. The system processes visible signs through a lightweight model  
 3. The user answers a few simple symptom-related questions  
 4. Based on combined inputs, a possible condition is suggested  
 5. The system provides basic precautions and recommended next steps
 
-## Our Technology Choices
+## Our Technology Choices:
 We have kept the prototype intentionally simple and focused:
 
 * Frontend: HTML, CSS (mobile-friendly layout), JavaScript   
@@ -36,7 +37,7 @@ We have kept the prototype intentionally simple and focused:
 * Processing: Basic logic simulating detection behavior  
 * Storage: Planned for future integration
 
- ## What We Aim to Achieve
+ ## What We Aim to Achieve:
 - Help farmers notice problems earlier  
 - Encourage quick preventive action  
 - Reduce avoidable losses  
@@ -58,7 +59,7 @@ PashuRakshak AI is built with the intention to:
 ## Current Status :
 The project is currently in the prototype stage, focusing on demonstrating core functionality 
 
-## Future Scope
+## Future Scope:
 * Integration of trained AI models for higher accuracy  
 * Full offline functionality using mobile edge AI  
 * Multi-language and voice-based support  
@@ -67,10 +68,10 @@ The project is currently in the prototype stage, focusing on demonstrating core 
 
 ## PashuRakshak_AI by team CRAZYYY:
 TEAM MEMBERS NAME:
-1.AARNA DESAI
-2.PEARL PRABHUNE
-3.PARI WELE
-4.SOUMYA MENDHE 
+- 1.AARNA DESAI
+- 2.PEARL PRABHUNE
+- 3.PARI WELE
+- 4.SOUMYA MENDHE 
 
   
 

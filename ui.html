@@ -1,1 +1,202 @@
+<html> 
+  </head>
 
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-icon">🐄</div>PashuRakshak_AI
+        </a>
+        <ul class="nav-links">
+            <li><a href="#diagnose">Diagnose</a></li>
+            <li><a href="#diseases">Diseases</a></li>
+            <li><a href="#features">Features</a></li>
+          
+            <li><a href="#diagnose" class="nav-cta">Try Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                AI-Powered · Mobile Edge · Multilingual
+            </div>
+            <h1 class="hero-title">
+                Detect Cattle<br />Disease <em>Early</em>.<br />Save Livelihoods.
+            </h1>
+            <p class="hero-desc">
+                PashuRakshak brings cutting-edge AI diagnostics to rural farmers — upload an image, describe symptoms,
+                and
+                get an instant preliminary diagnosis for LSD, FMD, Mastitis, and more.
+            </p>
+            <div class="hero-actions">
+                <a href="#diagnose" class="btn-primary">🔬 Start Diagnosis</a>
+                <a href="#how" class="btn-secondary">How It Works</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Diseases Detected</span>
+                </div>
+                <div class="stat"><span class="stat-num">87%</span><span class="stat-label">Accuracy Rate</span></div>
+                <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Languages</span></div>
+            </div>
+        </div>
+      <div class="hero-visual">
+            <div class="hero-card">
+                <div class="card-header">
+                    <div class="card-avatar">🐄</div>
+                    <div class="card-title-wrap">
+                        <div class="card-title">AI Diagnosis Report</div>
+                        <div class="card-sub">Analyzed just now</div>
+                    </div>
+                    <div class="card-status">● Live</div>
+                </div>
+                <div class="chat-bubble user">मेरी गाय के शरीर पर गांठें हैं और बुखार है</div>
+                <div class="chat-bubble ai">Analyzing image + symptoms for Lumpy Skin Disease indicators...</div>
+                <div class="diagnosis-card">
+                    <div class="diagnosis-label">Preliminary Diagnosis</div>
+                    <div class="diagnosis-name">Lumpy Skin Disease (LSD)</div>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill"></div>
+                    </div>
+                    <div class="confidence-text">87% confidence · Consult vet immediately</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+ <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how">
+        <div style="text-align:center; margin-bottom:0;">
+            <div class="section-label">Simple & Fast</div>
+            <h2 class="section-title" style="color:var(--cream); text-align:center;">How PashuRakshak Works</h2>
+            <p class="section-desc" style="color:var(--wheat); margin:0 auto;">Four easy steps. No veterinary expertise
+                needed. Works offline in rural areas.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card reveal">
+                <div class="step-num">01</div>
+                <div class="step-icon">📸</div>
+                <div class="step-title">Capture / Upload Image</div>
+                <div class="step-desc">Take a photo of the affected animal or upload an existing image from your phone
+                    gallery.</div>
+            </div>
+            <div class="step-card reveal">
+                <div class="step-num">02</div>
+                <div class="step-icon">📋</div>
+                <div class="step-title">Input Symptoms</div>
+                <div class="step-desc">Select observed symptoms from a guided checklist in your preferred regional
+                    language.</div>
+            </div>
+            <div class="step-card reveal">
+                <div class="step-num">03</div>
+                <div class="step-icon">🧠</div>
+                <div class="step-title">AI CNN Analysis</div>
+                <div class="step-desc">Our Convolutional Neural Network processes the image + symptoms and
+                    cross-validates findings.</div>
+            </div>
+            <div class="step-card reveal">
+                <div class="step-num">04</div>
+                <div class="step-icon">💊</div>
+                <div class="step-title">Get Diagnosis & Care Steps</div>
+                <div class="step-desc">Receive a preliminary diagnosis with first-aid steps, quarantine advice, and
+                    nearest vet location.</div>
+            </div>
+        </div>
+    </section>
+<!-- DIAGNOSE TOOL -->
+    <section class="diagnose-section" id="diagnose">
+        <div class="diagnose-layout">
+            <div>
+                <div class="section-label">Live Tool</div>
+                <h2 class="section-title">Diagnose Your Animal</h2>
+                <p class="section-desc">Fill in the details below for an AI-powered preliminary health assessment. This
+                    is a screening tool — always consult a licensed veterinarian for treatment.</p>
+
+                <div class="diagnose-form-wrap" style="margin-top:2rem; position:relative;">
+                    <div class="loading-overlay" id="loadingOverlay">
+                        <div class="loader"></div>
+                        <div class="loading-text">Analyzing with CNN Model...</div>
+                        <div class="loading-steps">
+                            <span id="loadStep1">✓ Image preprocessing</span>
+                            <span id="loadStep2" style="opacity:0.4">→ Feature extraction</span>
+                            <span id="loadStep3" style="opacity:0.4">→ Disease classification</span>
+                        </div>
+                    </div>
+
+                    <div class="form-title">🩺 Animal Health Form</div>
+
+                    <div class="form-group">
+                        <label class="form-label">Language / भाषा</label>
+                        <div class="lang-select-wrap">
+                            <button class="lang-btn active" onclick="setLang(this,'en')">English</button>
+                            <button class="lang-btn" onclick="setLang(this,'hi')">हिंदी</button>
+                            <button class="lang-btn" onclick="setLang(this,'mr')">मराठी</button>
+                            <button class="lang-btn" onclick="setLang(this,'gu')">ગુજ.</button>
+                            <button class="lang-btn" onclick="setLang(this,'pa')">ਪੰਜਾਬੀ</button>
+                            <button class="lang-btn" onclick="setLang(this,'ta')">தமிழ்</button>
+                        </div>
+                    </div>
+                  [4:51 pm, 17/4/2026] Aarna: <div class="form-group">
+                        <label class="form-label">Animal Type</label>
+                        <select class="form-select" id="animalType">
+                            <option value="">Select animal...</option>
+                            <option value="cow">🐄 Cow (गाय)</option>
+                            <option value="buffalo">🐃 Buffalo (भैंस)</option>
+                            <option value="calf">🐂 Calf (बछड़ा)</option>
+                            <option value="bull">🐂 Bull (बैल)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Upload Animal Image</label>
+                        <div class="upload-zone" id="uploadZone">
+                            <input type="file" accept="image/*" id="imageInput" onchange="handleImageUpload(event)" />
+                            <div class="upload-icon">📷</div>
+                            <div class="upload-text">
+                                <strong>Tap to upload or take photo</strong><br />
+                                JPG, PNG supported · Max 10MB
+                            </div>
+                        </div>
+                        <div class="upload-preview" id="uploadPreview">
+                            <img id="previewImg" src="" alt="Uploaded animal" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Observed Symptoms (select all that apply)</label>
+                        <div class="symptoms-grid" id="symptomsGrid">
+                            <div class="symptom-chip" onclick="toggleSymptom(this)">
+                                <span class="chip-dot"></span> Skin nodules/lumps
+                            </div>
+                            <div class="symptom-chip" onclick="toggleSymptom(this)">
+                                <span class="chip-dot"></span> High fever
+                            </div>
+                            <div class="symptom-chip" onclick="toggleSymptom(this)">
+                                <span class="chip-dot"></span> Mouth blisters
+                            </div>
+                            <div class="symptom-chip" onclick="toggleSymptom(this)">
+                                <span class="chip-dot"></span> Hoof lesions
+                            </div>
+                            <div class="symptom-chip" onclick="toggleSymptom(this)">
+                                <span class="chip-dot"></span> Reduced milk yield
+                            </div>
+                            <div class="symptom-chip" onclick="toggleSymptom(this)">
+                                <span class="chip-dot"></span> Udder swelling
+                            </div>
+
+                            </div>
+        <div class="footer-bottom">
+            <p>©️ 2026 PashuMitra. For preliminary screening only. Always consult a licensed veterinarian for diagnosis
+                and treatment.</p>
+            <div class="footer-socials">
+                <a class="social-link">📘</a>
+                <a class="social-link">🐦</a>
+                <a class="social-link">📸</a>
+            </div>
+        </div>
+    </footer>
+                    </body>
+                      </html>

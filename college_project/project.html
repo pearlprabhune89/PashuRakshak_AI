@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FlowGuard - Smart Flood System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        header {
+            background: #0077b6;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background: #023e8a;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        button {
+            background: #0077b6;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            background: #023e8a;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌊 FlowGuard</h1>
+        <p>Smart Urban Flood & Wastewater Management System</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#report">Report Issue</a>
+        <a href="#status">Live Status</a>
+    </nav>
+
+    <section id="home">
+        <div class="card">
+            <h2>About the Project</h2>
+            <p>
+                FlowGuard is an intelligent system that detects waterlogging in real-time
+                and automatically prevents flooding using smart drainage and solar-powered units.
+            </p>
+        </div>
+    </section>
+
+    <section id="report">
+        <div class="card">
+            <h2>🚨 Report Waterlogging</h2>
+
+            <form onsubmit="submitForm(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="text" placeholder="Location" required>
+                <textarea placeholder="Describe the issue..." required></textarea>
+                <button type="submit">Submit Report</button>
+            </form>
+
+            <p id="message"></p>
+        </div>
+    </section>
+
+    <section id="status">
+        <div class="card">
+            <h2>📊 Live System Status</h2>
+            <p>Water Level: <strong id="waterLevel">Normal</strong></p>
+            <p>System Status: <strong id="systemStatus">Monitoring</strong></p>
+
+            <button onclick="simulateFlood()">Simulate Flood</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 FlowGuard | Smart City Innovation</p>
+    </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            document.getElementById("message").innerText = "✅ Report submitted successfully!";
+        }
+
+        function simulateFlood() {
+            document.getElementById("waterLevel").innerText = "HIGH";
+            document.getElementById("systemStatus").innerText = "PUMP ACTIVATED";
+        }
+    </script>
+
+</body>
+
+</html>

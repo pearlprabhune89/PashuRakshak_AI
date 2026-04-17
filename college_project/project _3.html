@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FlowGuard Pro</title>
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        /* HEADER */
+        header {
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        /* GRID */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* CARD */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FORM */
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border-radius: 10px;
+            border: none;
+        }
+
+        button {
+            background: #38bdf8;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* MAP */
+        #map {
+            height: 300px;
+            border-radius: 12px;
+        }
+
+        /* STATUS */
+        .pending {
+            color: orange;
+        }
+
+        .progress {
+            color: yellow;
+        }
+
+        .resolved {
+            color: lightgreen;
+        }
+
+        /* DASHBOARD GRID */
+        .analytics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>🌊 FlowGuard Pro Dashboard</header>
+
+    <div class="container">
+
+        <!-- LEFT SIDE -->
+        <div>
+
+            <!-- FORM -->
+            <div class="card">
+                <h3>🚨 Report Issue</h3>
+                <form onsubmit="addComplaint(event)">
+                    <input id="name" placeholder="Name" required>
+                    <input id="location" placeholder="Location" required>
+
+                    <select id="type">
+                        <option>Waterlogging</option>
+                        <option>Garbage</option>
+                        <option>Road Damage</option>
+                    </select>
+
+                    <textarea id="issue" placeholder="Describe issue..." required></textarea>
+
+                    <select id="status">
+                        <option>Pending</option>
+                        <option>In Progress</option>
+                        <option>Resolved</option>
+                    </select>
+
+                    <button>Submit</button>
+                </form>
+            </div>
+
+            <!-- MAP -->
+            <div class="card">
+                <h3>📍 Live Tracking Map</h3>
+                <div id="map"></div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div>
+
+            <!-- ANALYTICS -->
+            <div class="card analytics">
+                <canvas id="chart1"></canvas>
+                <canvas id="chart2"></canvas>
+            </div>
+
+            <!-- COMPLAINT LIST -->
+            <div class="card">
+                <h3>📋 Complaints</h3>
+                <div id="list"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        // MAP
+        let map = L.map('map').setView([21.1458, 79.0882], 12); // Nagpur
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        // ADD COMPLAINT
+        function addComplaint(e) {
+            e.preventDefault();
+
+            let data = {
+                name: name.value,
+                location: location.value,
+                type: type.value,
+                issue: issue.value,
+                status: status.value,
+                lat: 21.1458 + Math.random() / 100,
+                lng: 79.0882 + Math.random() / 100
+            };
+
+            let arr = JSON.parse(localStorage.getItem("data")) || [];
+            arr.push(data);
+            localStorage.setItem("data", JSON.stringify(arr));
+
+            L.marker([data.lat, data.lng]).addTo(map)
+                .bindPopup(data.issue);
+
+            display();
+            loadCharts();
+        }
+
+        // DISPLAY
+        function display() {
+            let arr = JSON.parse(localStorage.getItem("data")) || [];
+            list.innerHTML = "";
+
+            arr.forEach(c => {
+                let cls = "pending";
+                if (c.status == "In Progress") cls = "progress";
+                if (c.status == "Resolved") cls = "resolved";
+
+                list.innerHTML += `
+      <div style="margin:10px 0;">
+        <b>${c.type}</b> - ${c.location}<br>
+        ${c.issue}<br>
+        <span class="${cls}">${c.status}</span>
+      </div>
+    `;
+            });
+        }
+
+        // CHARTS
+        function loadCharts() {
+            let arr = JSON.parse(localStorage.getItem("data")) || [];
+
+            let types = { Waterlogging: 0, Garbage: 0, "Road Damage": 0 };
+
+            arr.forEach(c => types[c.type]++);
+
+            new Chart(document.getElementById("chart1"), {
+                type: "bar",
+                data: {
+                    labels: Object.keys(types),
+                    datasets: [{ label: "Issues", data: Object.values(types) }]
+                }
+            });
+
+            let status = { Pending: 0, "In Progress": 0, Resolved: 0 };
+
+            arr.forEach(c => status[c.status]++);
+
+            new Chart(document.getElementById("chart2"), {
+                type: "pie",
+                data: {
+                    labels: Object.keys(status),
+                    datasets: [{ data: Object.values(status) }]
+                }
+            });
+        }
+
+        window.onload = () => {
+            display();
+            loadCharts();
+        };
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FlowGuard Dashboard</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: #0f172a;
+            color: white;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #0ea5e9, #2563eb);
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* LAYOUT */
+        .container {
+            display: flex;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 220px;
+            background: #020617;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            color: #38bdf8;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+
+        /* MAIN */
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* CARDS */
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FORM */
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            background: #0ea5e9;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* STATUS COLORS */
+        .pending {
+            color: orange;
+        }
+
+        .progress {
+            color: yellow;
+        }
+
+        .resolved {
+            color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>🌊 FlowGuard Smart Flood Dashboard</header>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h3>Menu</h3>
+            <a href="#">Dashboard</a>
+            <a href="#">Report Issue</a>
+            <a href="#">Complaints</a>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main">
+
+            <!-- REPORT FORM -->
+            <div class="card">
+                <h2>🚨 Report Waterlogging</h2>
+
+                <form onsubmit="addComplaint(event)">
+                    <input id="name" placeholder="Your Name" required>
+                    <input id="location" placeholder="Location" required>
+                    <textarea id="issue" placeholder="Describe issue..." required></textarea>
+
+                    <select id="status">
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <!-- LIVE STATUS -->
+            <div class="card">
+                <h2>📊 Live System Status</h2>
+                <p>Water Level: <strong id="water">Normal</strong></p>
+                <p>System: <strong id="system">Monitoring</strong></p>
+                <button onclick="simulate()">Simulate Flood</button>
+            </div>
+
+            <!-- COMPLAINTS -->
+            <div class="card">
+                <h2>📋 Complaints Dashboard</h2>
+                <div id="list"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        function addComplaint(e) {
+            e.preventDefault();
+
+            let data = {
+                name: document.getElementById("name").value,
+                location: document.getElementById("location").value,
+                issue: document.getElementById("issue").value,
+                status: document.getElementById("status").value
+            };
+
+            let complaints = JSON.parse(localStorage.getItem("data")) || [];
+            complaints.push(data);
+            localStorage.setItem("data", JSON.stringify(complaints));
+
+            display();
+        }
+
+        function display() {
+            let complaints = JSON.parse(localStorage.getItem("data")) || [];
+            let list = document.getElementById("list");
+
+            list.innerHTML = "";
+
+            complaints.forEach((c, i) => {
+
+                let colorClass = "pending";
+                if (c.status === "In Progress") colorClass = "progress";
+                if (c.status === "Resolved") colorClass = "resolved";
+
+                list.innerHTML += `
+      <div style="border-bottom:1px solid #334155; padding:10px;">
+        <strong>${c.name}</strong> - ${c.location}<br>
+        ${c.issue}<br>
+        Status: <span class="${colorClass}">${c.status}</span>
+      </div>
+    `;
+            });
+        }
+
+        function simulate() {
+            document.getElementById("water").innerText = "HIGH";
+            document.getElementById("system").innerText = "PUMP ACTIVE";
+        }
+
+        window.onload = display;
+
+    </script>
+
+</body>
+
+</html>

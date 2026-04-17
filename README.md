@@ -8,10 +8,10 @@ PahuRakshak_AI is designed as a practical solution to assit farmers in identifyi
 Livestock diseases like Lumpy Skin Disease, Foot and Mouth Disease, and Mastitis tend to spread quickly and escalate before action is taken.
 
 In real-world conditions:
-- Veterinary help is not always immediately accessible  
-- Early symptoms are subtle and easy to miss  
-- Delays in diagnosis increase both risk and cost
--Internet connectivity cannot be relied upon
+* Veterinary help is not always immediately accessible
+* Early symptoms are subtle and easy to miss  
+* Delays in diagnosis increase both risk and cost
+* Internet connectivity cannot be relied upon
 
   ## Key Features
 -  Image-based detection of visible symptoms  
@@ -21,7 +21,7 @@ In real-world conditions:
 -  Information about nearby veterinary support (demo level)  
 -  Designed with low-connectivity environments in mind
 
-  ## How PahuRakshak_AI Works:
+  ## How PashuRakshak_AI Works:
 1. The user uploads or captures an image of the animal  
 2. The system processes visible signs through a lightweight model  
 3. The user answers a few simple symptom-related questions  
@@ -31,16 +31,22 @@ In real-world conditions:
 ## Our Technology Choices
 We have kept the prototype intentionally simple and focused:
 
-- Frontend: HTML, CSS (mobile-friendly layout)  
-- Backend: Python with Flask  
-- Processing: Basic logic simulating detection behavior  
-- Storage: Planned for future integration  
+* Frontend: HTML, CSS (mobile-friendly layout), JavaScript   
+* Backend: Python with Flask  
+* Processing: Basic logic simulating detection behavior  
+* Storage: Planned for future integration
+
+ ## What We Aim to Achieve
+- Help farmers notice problems earlier  
+- Encourage quick preventive action  
+- Reduce avoidable losses  
+- Support better livestock care practices
 
 ## Design Focus of PashuRakshak_AI:
-- *Ease of Use: Simple interface for users with minimal digital experience  
-- *Accessibility: Works in low or unstable network conditions  
-- *Clarity: Clear outputs without technical complexity  
-- *Speed: Fast response for real-time assistance
+ *Ease of Use: Simple interface for users with minimal digital experience  
+ *Accessibility: Works in low or unstable network conditions  
+ *Clarity: Clear outputs without technical complexity  
+ *Speed: Fast response for real-time assistance
 
 ## Impact of PashuRakshak_AI: 
 PashuRakshak AI is built with the intention to:
@@ -51,6 +57,21 @@ PashuRakshak AI is built with the intention to:
   
 ## Current Status :
 The project is currently in the prototype stage, focusing on demonstrating core functionality 
+
+## Future Scope
+* Integration of trained AI models for higher accuracy  
+* Full offline functionality using mobile edge AI  
+* Multi-language and voice-based support  
+* Real-time connection with veterinary professionals  
+* Continuous health monitoring and alerts
+
+## PashuRakshak_AI by team CRAZYYY:
+TEAM MEMBERS NAME:
+1.AARNA DESAI
+2.PEARL PRABHUNE
+3.PARI WELE
+4.SOUMYA MENDHE 
+
   
 
   
